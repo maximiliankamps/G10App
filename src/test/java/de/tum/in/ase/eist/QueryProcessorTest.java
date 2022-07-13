@@ -1,6 +1,7 @@
 package de.tum.in.ase.eist;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.util.Assert;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -27,6 +28,13 @@ class QueryProcessorTest {
 		String actual = queryProcessor.process("shakespeare");
 		if (!actual.contains("playwright")) {
 			fail("Your QueryProcessor should not be case sensitive.");
+		}
+	}
+	@Test
+	void largest() {
+		String test = "which of the following numbers is the largest: 100, 2000, 30000";
+		if(!queryProcessor.process(test).equals("30000")) {
+			fail("fail number");
 		}
 	}
 
